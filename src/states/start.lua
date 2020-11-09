@@ -1,0 +1,45 @@
+StartState = Class {__includes = BaseState}
+
+local highlighted = 1
+
+function StartState:update(dt)
+  if love.keyboard.wasPressed("up") or love.keyboard.wasPressed("down") then
+    highlighted = highlighted == 1 and 2 or 1
+  end
+
+  if love.keyboard.wasPressed("enter") or love.keyboard.wasPressed("return") then
+    if highlighted == 1 then
+      gStateMachine:change("play")
+    end
+  end
+
+  if love.keyboard.wasPressed("escape") then
+    love.event.quit()
+  end
+end
+
+function StartState:render()
+  love.graphics.setFont(retro_big)
+  love.graphics.setColor(Colors["Topic"])
+
+  love.graphics.printf("BREAKOUT", 0, VIRTUAL_HEIGHT / 3 + 20, VIRTUAL_WIDTH, "center")
+
+  love.graphics.setFont(retro_medium)
+
+  love.graphics.setColor(Colors["Orange"])
+
+  if highlighted == 1 then
+    love.graphics.setColor(Colors["Green"])
+  end
+  love.graphics.printf("START", 0, VIRTUAL_HEIGHT / 2 + 120, VIRTUAL_WIDTH, "center")
+
+  love.graphics.setColor(Colors["Orange"])
+
+  if highlighted == 2 then
+    love.graphics.setColor(Colors["Green"])
+  end
+  love.graphics.printf("HIGH SCORES", 0, VIRTUAL_HEIGHT / 2 + 170, VIRTUAL_WIDTH, "center")
+
+  -- reset the color
+  love.graphics.setColor(1, 1, 1, 1)
+end
