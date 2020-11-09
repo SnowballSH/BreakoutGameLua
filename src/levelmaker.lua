@@ -14,7 +14,8 @@ function LevelMaker.createMap(level)
         (x - 1) * 55 + 8 + -- the screen should have 8 pixels of padding; we can fit 13 cols + 16 pixels total
           (13 - numCols) * 55, -- left-side padding for when there are fewer than 13 columns
         -- y-coordinate
-        y * 22 + 55
+        y * 22 + 55,
+        math.random(1, 7)
       )
 
       table.insert(bricks, b)

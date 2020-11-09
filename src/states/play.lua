@@ -39,9 +39,9 @@ function PlayState:update(dt)
     self.ball.dy = -self.ball.dy
 
     if self.ball.x < self.paddle.x + (self.paddle.width / 2) and self.paddle.dx < 0 then
-      self.ball.dx = -300
+      self.ball.dx = -400
     elseif self.ball.x > self.paddle.x + (self.paddle.width / 2) and self.paddle.dx > 0 then
-      self.ball.dx = 300
+      self.ball.dx = 400
     end
   end
 

@@ -1,8 +1,9 @@
 Brick = Class {}
 
-function Brick:init(x, y)
+function Brick:init(x, y, color)
+  color = color or 3
   self.tier = 2
-  self.color = 3
+  self.color = color
 
   self.x = x
   self.y = y
